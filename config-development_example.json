@@ -1,0 +1,29 @@
+{
+	"site_url": "http://localhost/PHP-Basic-Framework/", /* URI to your application */
+	"path": "", /* Complete path to the application root (current folder) */
+	"language": "en", /* The default language for the app, if already known */
+	"config_modifiers": "set_user_language", /* You can define some functions that will modify your configuration, just when the app is launched (so that you can adjust, depending on the user or any other data) */
+
+	"urls": {
+		"default_model": "home", /* The URL that will be loaded by default */
+		"404_error": "errors/404", /* Your 404 error page URI */
+		"rewrite": {
+			"accueil": "home",
+			"accueil/(.*)": "home/$1"
+		}
+	},
+
+	"autoload": { /* You can automatically load some files and functionalities when the app is launched */
+		"models": {
+			"db": "database",
+			"security": "security"
+		},
+		"helpers": [
+			"html"
+		]
+	},
+
+	"application": {
+		/* Your project configuration here */
+	}
+}

@@ -1,0 +1,29 @@
+{
+	"site_url": "",
+	"path": "",
+	"language": "en",
+	"config_modifiers": "set_user_language",
+
+	"urls": {
+		"default_model": "home",
+		"404_error": "errors/404",
+		"rewrite": {
+			"accueil": "home",
+			"accueil/(.*)": "home/$1"
+		}
+	},
+
+	"autoload": {
+		"models": {
+			"db": "database",
+			"security": "security"
+		},
+		"helpers": [
+			"html"
+		]
+	},
+
+	"application": {
+		
+	}
+}
