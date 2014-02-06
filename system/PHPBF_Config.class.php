@@ -39,16 +39,36 @@ class PHPBF_Config{
 			break;
 		}
 
+		if(!$this->get('path'))
+			$this->set('path', PHPBF_ROOT);
+
+		if(isset($this->json_object->config_modifiers)){
+			if(is_string($this->json_object->config_modifiers)){
+				$this->json_object->config_modifiers = explode(',', $this->json_object->config_modifiers);
+			}
+			if(is_array($this->json_object->config_modifiers) && sizeof($this->json_object->config_modifiers) > 0){
+				require_once(PHPBF_ROOT.'classes/Config_Modifiers.class.php');
+
+				foreach($this->json_object->config_modifiers as $modifier)
+				Config_Modifiers::$modifier($this);
+			}
+		}
+
 		return $this->json_object;
 	}
 
-	public function get($key = ''){
-		if(isset($this->json_object[$key]))
-			return $this->json_object[$key];
+	public function get($key){
+		if(isset($this->json_object->{$key}))
+			return $this->json_object->{$key};
 		return null;
 	}
 
 	public function getAll(){
 		return $this->json_object;
+	}
+
+	public function set($key, $value){
+		if(isset($this->json_object->{$key}))
+			$this->json_object->{$key} = $value;
 	}
 }
