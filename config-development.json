@@ -2,7 +2,7 @@
 	"site_url": "",
 	"path": "",
 	"language": "en",
-	"config_modifiers": "set_user_language",
+	"config_modifiers": ["set_user_language"],
 
 	"urls": {
 		"default_model": "home",
