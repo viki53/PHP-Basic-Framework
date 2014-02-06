@@ -1,6 +1,5 @@
 <?php
 define('ENVIRONMENT', 'development');
-// define('ENVIRONMENT', 'testing');
 // define('ENVIRONMENT', 'production');
 
 define('PHPBF_INDEX', pathinfo(__FILE__, PATHINFO_BASENAME));
