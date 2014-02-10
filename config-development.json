@@ -5,11 +5,12 @@
 	"config_modifiers": ["set_user_language"],
 
 	"urls": {
-		"default_model": "home",
+		"default_controller": "home",
+		"default_controller_function": "index",
 		"404_error": "errors/404",
 		"rewrite": {
-			"accueil": "home",
-			"accueil/(.*)": "home/$1"
+			"accueil/(.*)": "home/$1",
+			"accueil": "home"
 		}
 	},
 

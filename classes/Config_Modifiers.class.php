@@ -7,9 +7,8 @@ class Config_Modifiers{
 
 			foreach($accepted_languages as $l){
 				if(is_dir('languages/'.strtolower($l[1]))){
-					echo 'hello';
 					$config->set('language', strtolower($l[1]));
-					break;
+					return;
 				}
 			}
 		}

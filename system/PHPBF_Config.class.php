@@ -24,11 +24,14 @@ class PHPBF_Config{
 			return null;
 		}
 
+		if(!is_file('app-errors.log'))
+			file_put_contents('app-errors.log', '');
+
 		ini_set('error_log', 'app-errors.log');
 
 		switch(ENVIRONMENT){
 			case 'development':
-				error_reporting(-1);
+				error_reporting(E_ALL);
 				ini_set('display_errors', 1);
 			break;
 
@@ -36,6 +39,7 @@ class PHPBF_Config{
 			default:
 				error_reporting(E_ALL & ~E_NOTICE & ~E_DEPRECATED & ~E_STRICT);
 				ini_set('display_errors', 0);
+				ini_set('ignore_repeated_errors', 'On');
 			break;
 		}
 
