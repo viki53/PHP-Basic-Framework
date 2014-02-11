@@ -5,9 +5,14 @@ class Home_Controller extends PHPBF_Controller{
 		parent::__construct($config);
 	}
 
-	public function blabla(){
-		echo '<h1>Hello World!</h1>';
-		echo '<h2>It works!</h2>';
-		echo '<h3>Isn\'t that amazing?!</h3>';
+	public function index(){
+		return $this->blabla();
+	}
+
+	public function blabla($str = ''){
+		// echo '<pre>';
+		// var_dump($this);
+		// exit;
+		$this->load->view('home-blabla', array('str' => $str));
 	}
 }

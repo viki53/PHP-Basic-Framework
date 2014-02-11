@@ -54,7 +54,7 @@ class PHPBF{
 		require_once('controllers/'.ucwords($controller_name).'.php');
 		$controller = new $controller_class($config);
 
-		error_log('Calling '.$controller_name.'->'.$controller_function.'() with '.sizeof($controller_parameters).' parameters');
+		// error_log('Calling '.$controller_name.'->'.$controller_function.'() with '.sizeof($controller_parameters).' parameters');
 		call_user_func_array(array($controller, $controller_function), $controller_parameters);
 	}
 }

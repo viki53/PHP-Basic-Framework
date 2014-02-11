@@ -2,7 +2,7 @@
 
 class PHPBF_Config{
 	private $file_name;
-	private $json_str;
+	// private $json_str;
 	private $json_object;
 
 	public function __construct(){
@@ -12,13 +12,13 @@ class PHPBF_Config{
 	public function load(){
 		$this->file_name = 'config-'.ENVIRONMENT.'.json';
 
-		$this->json_str = @file_get_contents($this->file_name);
+		$json_str = @file_get_contents($this->file_name);
 
-		if(empty($this->json_str)){
+		if(empty($json_str)){
 			return null;
 		}
 
-		$this->json_object = @json_decode($this->json_str);
+		$this->json_object = @json_decode($json_str);
 
 		if(empty($this->json_object)){
 			return null;

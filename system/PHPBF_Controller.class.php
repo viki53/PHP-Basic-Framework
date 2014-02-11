@@ -1,11 +1,11 @@
 <?php if(!defined('ENVIRONMENT')) die('Direct access not allowed');
 
 class PHPBF_Controller{
-	private $config;
-	private $load;
+	protected $config;
+	protected $load;
 
-	public function __construct($config){
-		$this->config = $config;
-		$this->load = new PHPBF_Loader();
+	public function __construct(&$config){
+		$this->config = &$config;
+		$this->load = new PHPBF_Loader($this->config);
 	}
 }
