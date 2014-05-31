@@ -22,7 +22,7 @@ class Listenable_Object{
 		return isset($this->properties[$key]) ? $this->properties[$key] : NULL;
 	}
 
-	public function on($event, &$listener) {
+	public function bind($event, &$listener) {
 		if(!isset($this->events_listeners[$event])) {
 			$this->events_listeners[$event] = array();
 		}
