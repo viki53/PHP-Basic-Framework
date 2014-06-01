@@ -10,9 +10,10 @@ class Home_Controller extends PHPBF_Controller{
 	}
 
 	public function blabla($str = ''){
-		// echo '<pre>';
-		// var_dump($this);
-		// exit;
-		$this->load->view('home-blabla', array('str' => $str));
+		$obj = new Listenable_Object(array('id' => 1, 'name' => 'foo'));
+		
+		$obj->bind('before_save', function($o){ $o->set('name', 'bar'); });
+
+		$this->load->view('home-blabla', array('str' => $str, 'obj' => $obj));
 	}
 }
