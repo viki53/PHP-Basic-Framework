@@ -11,10 +11,7 @@
 		<?php
 		if(!empty($obj)) {
 			echo '<p>Obj = '.$obj.'</p>';
-			if($obj->saveToFile('obj.json')) {
-				echo '<p>Saved</p>';
-			}
-			echo '<p>Obj = '.$obj.'</p>';
+			$obj->saveToFile('obj.json');
 			echo '<hr />';
 		}
 		if(!empty($str)) {
