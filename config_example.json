@@ -1,6 +1,7 @@
 {
 	"site_url": "http://localhost/PHP-Basic-Framework/", /* URI to your application */
 	"path": "", /* Complete path to the application root (current folder) */
+	"index_file": "index.php", /* If you are not using URL rewriting, you should indicate what name of the main file (typically `index.php`) */
 	"language": "en", /* The default language for the app, if already known */
 	"config_modifiers": ["set_user_language"], /* You can define some functions that will modify your configuration, just when the app is launched (so that you can adjust, depending on the user or any other data) */
 

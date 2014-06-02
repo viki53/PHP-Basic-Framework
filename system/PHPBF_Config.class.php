@@ -3,10 +3,10 @@
 class PHPBF_Config{
 	private $file_name;
 	// private $json_str;
-	private $json_object;
+	private $properties;
 
 	public function __construct(){
-
+		$this->load();
 	}
 
 	public function load(){
@@ -18,14 +18,15 @@ class PHPBF_Config{
 			return null;
 		}
 
-		$this->json_object = @json_decode($json_str);
+		$this->properties = @json_decode($json_str);
 
-		if(empty($this->json_object)){
+		if(empty($this->properties)){
 			return null;
 		}
 
-		if(!is_file('app-errors.log'))
+		if(!is_file('app-errors.log')){
 			file_put_contents('app-errors.log', '');
+		}
 
 		ini_set('error_log', 'app-errors.log');
 
@@ -43,36 +44,41 @@ class PHPBF_Config{
 			break;
 		}
 
-		if(!$this->get('path'))
-			$this->set('path', PHPBF_ROOT);
+		if(!$this->get('site_url')){
+			$this->set('site_url', 'http://'.$_SERVER['HTTP_HOST'].($this->get('index_file') ? $_SERVER['SCRIPT_NAME'] : str_replace($this->get('index_file'), '', $_SERVER['SCRIPT_NAME'])));
+		}
 
-		if(isset($this->json_object->config_modifiers)){
-			if(is_string($this->json_object->config_modifiers)){
-				$this->json_object->config_modifiers = explode(',', $this->json_object->config_modifiers);
+		if(!$this->get('path')){
+			$this->set('path', PHPBF_ROOT);
+		}
+
+		if(isset($this->properties->config_modifiers)){
+			if(is_string($this->properties->config_modifiers)){
+				$this->properties->config_modifiers = explode(',', $this->properties->config_modifiers);
 			}
-			if(is_array($this->json_object->config_modifiers) && sizeof($this->json_object->config_modifiers) > 0){
+			if(is_array($this->properties->config_modifiers) && sizeof($this->properties->config_modifiers) > 0){
 				require_once(PHPBF_ROOT.'classes/Config_Modifiers.class.php');
 
-				foreach($this->json_object->config_modifiers as $modifier)
+				foreach($this->properties->config_modifiers as $modifier)
 				Config_Modifiers::$modifier($this);
 			}
 		}
 
-		return $this->json_object;
+		return $this->properties;
 	}
 
 	public function get($key){
-		if(isset($this->json_object->{$key}))
-			return $this->json_object->{$key};
+		if(isset($this->properties->{$key}))
+			return $this->properties->{$key};
 		return null;
 	}
 
 	public function getAll(){
-		return $this->json_object;
+		return $this->properties;
 	}
 
 	public function set($key, $value){
-		if(isset($this->json_object->{$key}))
-			$this->json_object->{$key} = $value;
+		if(isset($this->properties->{$key}))
+			$this->properties->{$key} = $value;
 	}
 }
