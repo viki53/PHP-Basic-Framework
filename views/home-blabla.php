@@ -12,15 +12,15 @@
 			echo '<p>Created : '.$obj.'</p>';
 			$obj->saveToFile('obj.json');
 		}
-		if(!empty($obj) && !empty($str)) {
-			echo '<hr />';
-		}
+		
+		echo '<hr />';
+		
 		echo '<h2>Controller parameters (via the URL)</h2>';
 		if(!empty($str)) {
 			echo '<p>You said: '.$str.'</p>';
 		}
 		else {
-			echo '<p>You can change the URL to see what happens. <a href="'.$this->PHPBF->config->get('site_url').'">Try it!</a></p>';
+			echo '<p>You can change the URL to see what happens. <a href="'.$this->PHPBF->config->get('site_url').'/home/blabla/foo_bar">Try it!</a></p>';
 		}
 		?>
 	</body>
