@@ -7,10 +7,6 @@
 	<body>
 		<h1>Hello World</h1>
 		<?php
-		echo '<h2>Config</h2>';
-		echo '<pre>';
-		var_dump($this->PHPBF->config->getAll());
-		echo '</pre>';
 		if(!empty($obj)) {
 			echo '<h2>Listenable_Object</h2>';
 			echo '<p>Created : '.$obj.'</p>';
